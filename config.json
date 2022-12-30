@@ -1,4 +1,4 @@
 {
-    "connection_string": "root:root@tcp(127.0.0.1:3306)/btools",
-    "port": 8080
+    "connection_string": "userbtools:password@tcp(127.0.0.1:3360)/btools",
+    "port": 8081
 }

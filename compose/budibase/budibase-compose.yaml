@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  budibase:
+    restart: unless-stopped
+    image: budibase/budibase:latest
+    ports:
+      - "8080:80"
+    environment:
+      JWT_SECRET: "${JWT_SECRET}"
+      MINIO_ACCESS_KEY: "${MINIO_ACCESS_KEY}"
+      MINIO_SECRET_KEY: "${MINIO_SECRET_KEY}"
+      REDIS_PASSWORD: "${REDIS_PASSWORD}"
+      COUCHDB_USER: "${COUCHDB_USER}"
+      COUCHDB_PASSWORD: "${COUCHDB_PASSWORD}"
+      INTERNAL_API_KEY: "${INTERNAL_API_KEY}"
+    volumes:
+      - budibase_data:/data
+
+volumes:
+  budibase_data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: "${DEVICE_PATH}"
